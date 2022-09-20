@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native'
-import Botao from '../../src/components/Botao'
-import Display from '../../src/components/Display'
+import { View, StyleSheet } from 'react-native';
+import Botao from '../../src/components/Botao';
+import Display from '../../src/components/Display';
 
 function Calculadora(props) {
 
-    const [valorDisplay,setValorDisplay]=useState('')
-    const [resultado,setResultado]=useState(0)
-    const [acumulador,setAcumulador]=useState(0)
-    const [operado,setOperado]=useState(false)
+    const [valorDisplay,setValorDisplay]=useState('');
+    const [resultado,setResultado]=useState(0);
+    const [acumulador,setAcumulador]=useState(0);
+    const [operado,setOperado]=useState(false);
 
     const addDigitoDisplay = (d) => {
         if((d == '+' || d =='-' | d == '*' | d=='/') && operado) {
@@ -17,21 +17,16 @@ function Calculadora(props) {
         if (operado) {
             setValorDisplay(d);
             setOperado(false);
-            return;
         }
-        {/* valorDisplay + d é o valor que já está na Display mais o proximo digito digitado (pode ser um operador ou um outro numero), 
-        o operado só será true quando eu tiver uma expressão completa (Ex.: 5+3), nesse caso, o eval() vai pegar essa expressão, 
-        executar ela e, daí, setar operado para true */}
         const valorDigitadoDisplay = valorDisplay + d;
         setValorDisplay(valorDigitadoDisplay);
     }
 
     const limparMemoria = () => {
-        setOperado(false)
-        setValorDisplay('')
-        setResultado(0)
-        setAcumulador(0)
-        return;
+        setOperado(false);
+        setValorDisplay('');
+        setResultado(0);
+        setAcumulador(0);
     }
 
   const operacao = (operacao)=>{
@@ -41,7 +36,6 @@ function Calculadora(props) {
         vDisplay = vDisplay.substring(0,(vDisplay.length-1));
         setValorDisplay(vDisplay);
         setOperado(false);
-        return;
     } try {
         const r = eval(valorDisplay);
         setAcumulador(r);
