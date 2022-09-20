@@ -11,13 +11,13 @@ function Calculadora(props) {
     const [operado,setOperado]=useState(false);
 
     const addDigitoDisplay = (d) => {
-        if((d == '+' || d =='-' | d == '*' | d=='/') && operado) {
-            return;
-        }
+        if((d == '+' || d =='-' | d == '*' | d=='/') && operado);
+
         if (operado) {
             setValorDisplay(d);
             setOperado(false);
         }
+
         const valorDigitadoDisplay = valorDisplay + d;
         setValorDisplay(valorDigitadoDisplay);
     }
@@ -29,22 +29,22 @@ function Calculadora(props) {
         setAcumulador(0);
     }
 
-  const operacao = (operacao)=>{
-    if (operacao == 'backspace') {
-        let vDisplay = valorDisplay;
+    const operacao = (operacao)=>{
+        if (operacao == 'backspace') {
+            let vDisplay = valorDisplay;
 
-        vDisplay = vDisplay.substring(0,(vDisplay.length-1));
-        setValorDisplay(vDisplay);
-        setOperado(false);
-    } try {
-        const r = eval(valorDisplay);
-        setAcumulador(r);
-        setResultado(r);
-        setOperado(true);
-    } catch {
-        setResultado('Erro');
+            vDisplay = vDisplay.substring(0,(vDisplay.length-1));
+            setValorDisplay(vDisplay);
+            setOperado(false);
+        } try {
+            const r = eval(valorDisplay);
+            setAcumulador(r);
+            setResultado(r);
+            setOperado(true);
+        } catch {
+            setResultado('Erro');
+        }
     }
-  }
 
     return (
         <View style={[styles.wrpContainer]}>
